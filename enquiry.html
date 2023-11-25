@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="enquiry.css">
+    <!-- <script src="enquiry.js"></script> -->
+    <script>
+      function printError(elemId, hintMsg){
+          document.getElementById(elemId).innerHTML=hintMsg;
+      }
+      function validform(){
+         var company = document.Enquiryform.company.value;
+         var name = document.Enquiryform.name.value;
+         var address = document.Enquiryform.address.value;
+        var region = document.Enquiryform.region.value;
+        var City = document.Enquiryform.City.value;
+        var zipcode = document.Enquiryform.zipcode.value;
+        var country = document.Enquiryform.country.value;
+        var number = document.Enquiryform.number.value;
+        var email = document.Enquiryform.email.value;
+
+         var companyErr = nameErr = addressErr = regionErr = CityErr = zipcodeErr = countryErr = numberErr = emailErr = true;
+         
+         if(company == ""){
+           printError("companyErr" , "please enter your company name");
+         } else {
+            var regex = /^[a-zA-Z\s]+$/;                
+            if(regex.test(company) === false) {
+                printError("companyErr", "please enter a valid company name");
+            } else {
+                printError("companyErr", "");
+                companyErr = false;
+            }
+      }
+
+      if(name == ""){
+        printError("nameErr" , "please enter your name");
+      }else{
+         var regex = /^[a-zA-Z\s]+$/; 
+         if(regex.test(name) === false){
+          printError("nameErr", "please enter a valid name");
+         }else{
+           printError("nameErr" , "");
+           nameErr = false;
+         }
+      }
+
+      if(address == ""){
+        printError("addressErr" , "please enter your address");
+      }else{
+         var regex = /^\d{3,5}(-\d{3,4})?$/; 
+         if(regex.test(address) === false){
+          printError("addressErr", "please enter a valid address");
+         }else{
+           printError("addressErr" , "");
+           addressErr = false;
+         }
+      }
+
+      if(region == ""){
+        printError("regionErr" , "please enter your region name");
+         } else {
+            var regex = /^[a-zA-Z\s]+$/;                
+            if(regex.test(region) === false) {
+                printError("regionErr", "please enter a valid region name");
+            } else {
+                printError("regionErr", "");
+                regionErr = false;
+            }
+      }
+
+      if(City == ""){
+        printError("CityErr" , "please enter your city");
+      }else{
+        var regex = /^[a-zA-Z\s]+$/;
+        if(regex.test(City) === false){
+          printError("CityErr" , "please enter a valid city name");
+        }else{
+          printError("CityErr" , "");
+           CityErr = false;
+        }
+      }
+
+      if(zipcode == ""){
+        printError("zipcodeErr" , "please enter your zipcode");
+      }else{
+        var regex = /^\d{6}?$/;
+        if(regex.test(zipcode) === false){
+          printError("zipcodeErr" , "please enter a valid zipcode");
+        }else{
+          printError("zipcodeErr" , "");
+           zipcodeErr = false;
+        }
+      }
+
+      if(country == "Select") {
+        printError("countryErr", "Please select your country");
+    } else {
+        printError("countryErr", "");
+        countryErr = false;
+    }
+
+
+      if(number == ""){
+        printError("numberErr" , "please enter your phone number");
+      }else{
+        var regex = /^\d{10}?$/;
+        if(regex.test(number) === false){
+          printError("numberErr" , "please enter a valid phone number");
+        }else{
+          printError("numberErr" , "");
+           numberErr = false;
+        }
+      }
+
+      if(email == ""){
+        printError("emailErr" , "please enter your email address");
+      }else{
+        var regex = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+        if(regex.test(email) === false){
+          printError("emailErr" , "please enter a valid email address");
+        }else{
+          printError("emailErr" , "");
+           emailErr = false;
+        }
+      }
+      
+      if((companyErr || nameErr || addressErr || regionErr || CityErr || zipcodeErr || countryErr || numberErr || emailErr) == true) {
+           return false;
+        }
+        else{
+           var dataPreview = "You've entered the following details: \n" +
+                             "Company Name  :   " + company + "\n"+
+                             "Person Name       :   " + name + "\n"+
+                             "Address               :   " + address + "\n"+
+                             "Region                :   " + region + "\n"+
+                             "City                    :   " + City + "\n"+
+                             "zipcode              :   " + zipcode + "\n"+
+                             "number             :   " + number + "\n"+
+                             "email                 :   " + email + "\n"+
+                             "";
+                             alert(dataPreview);
+       }
+    }
+    function keydownFunction1() {
+    var name = document.getElementById("company").value;
+    var regex =  /^[a-zA-Z\s]+$/;                
+        if(regex.test(name)) {
+           document.getElementById("companyErr").innerHTML = "company name is valid";
+           document.getElementById("companyErr").style.color = "#28EA48";
+        } else {
+            document.getElementById("companyErr").innerHTML = "company name is invalid";
+           document.getElementById("companyErr").style.color = "red";
+        }
+    }
+    function keydownFunction2() {
+    var name = document.getElementById("name").value;
+    var regex =  /^[a-zA-Z\s]+$/;                
+        if(regex.test(name)) {
+           document.getElementById("nameErr").innerHTML = "your name is valid";
+           document.getElementById("nameErr").style.color = "#28EA48";
+        } else {
+            document.getElementById("nameErr").innerHTML = "your name is invalid";
+           document.getElementById("nameErr").style.color = "red";
+        }
+    }
+    function keydownFunction3() {
+    var name = document.getElementById("address").value;
+    var regex =  /^\d{3,5}(-\d{3,4})?$/;               
+        if(regex.test(name)) {
+           document.getElementById("addressErr").innerHTML = "Address is valid";
+           document.getElementById("addressErr").style.color = "#28EA48";
+        } else {
+            document.getElementById("addressErr").innerHTML = "Address is invalid";
+           document.getElementById("addressErr").style.color = "red";
+        }
+    }
+    function keydownFunction4() {
+    var name = document.getElementById("region").value;
+    var regex =  /^[a-zA-Z\s]+$/;               
+        if(regex.test(name)) {
+           document.getElementById("regionErr").innerHTML = "region is valid";
+           document.getElementById("regionErr").style.color = "#28EA48";
+        } else {
+            document.getElementById("regionErr").innerHTML = "region is invalid";
+           document.getElementById("regionErr").style.color = "red";
+        }
+    }
+
+    function keydownFunction5() {
+    var name = document.getElementById("City").value;
+    var regex =  /^[a-zA-Z\s]+$/;               
+        if(regex.test(name)) {
+           document.getElementById("CityErr").innerHTML = "City name is valid";
+           document.getElementById("CityErr").style.color = "#28EA48";
+        } else {
+            document.getElementById("CityErr").innerHTML = "City name is invalid";
+           document.getElementById("CityErr").style.color = "red";
+        }
+    }
+
+    function keydownFunction6() {
+    var name = document.getElementById("zipcode").value;
+    var regex =  /^\d{6}?$/;              
+        if(regex.test(name)) {
+           document.getElementById("zipcodeErr").innerHTML = "zipcode is valid";
+           document.getElementById("zipcodeErr").style.color = "#28EA48";
+        } else {
+            document.getElementById("zipcodeErr").innerHTML = "zipcode is invalid";
+           document.getElementById("zipcodeErr").style.color = "red";
+        }
+    }
+    
+    function keydownFunction7() {
+    var name = document.getElementById("number").value;
+    var regex =  /^\d{10}?$/;              
+        if(regex.test(name)) {
+           document.getElementById("numberErr").innerHTML = "Phone number is valid";
+           document.getElementById("numberErr").style.color = "#28EA48";
+        } else {
+            document.getElementById("numberErr").innerHTML = "Phone number is invalid";
+           document.getElementById("numberErr").style.color = "red";
+        }
+    }
+
+    function keydownFunction8() {
+    var name = document.getElementById("email").value;
+    var regex =  /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;             
+        if(regex.test(name)) {
+           document.getElementById("emailErr").innerHTML = "Email address is valid";
+           document.getElementById("emailErr").style.color = "#28EA48";
+        } else {
+            document.getElementById("emailErr").innerHTML = "Email address is invalid";
+           document.getElementById("emailErr").style.color = "red";
+        }
+    }
+        </script>
+</head>
+<body>
+<form name="Enquiryform" onsubmit="return validform()" action="" method="post">
+    <h2 class="heading">Enquiry Form</h2>
+    <div class="row">
+      <label>Company name</label>
+      <input type="text" name="company" id="company" onkeyup="keydownFunction1()">
+      <div class="error" id="companyErr"></div>
+    </div>
+    <br>
+    <div class="row">
+      <label>Contact Person</label>
+      <input type="text" name="name" id="name" onkeyup="keydownFunction2()">
+      <div class="error" id="nameErr"></div>
+    </div>
+    <br>
+    <div class="row">
+      <label>Address</label>
+      <input type="text" name="address" id="address" placeholder="### - ###" onkeyup="keydownFunction3()">
+      <div class="error" id="addressErr"></div>
+    </div>
+<br>
+    <div class="row">
+      <input type="text" name="region" id="region" placeholder="Region" onkeyup="keydownFunction4()">
+      <div class="error" id="regionErr"></div>
+    </div>
+    <br>
+    <div class="row">
+      <input type="text" name="City" id="City" placeholder="City" onkeyup="keydownFunction5()">
+      <div class="error" id="CityErr"></div>
+    </div>
+    <br>
+    <div class="row">
+      <input type="text" name="zipcode" id="zipcode" placeholder="Postal/Zipcode" onkeyup="keydownFunction6()">
+      <div class="error" id="zipcodeErr"></div>
+    </div>
+<br>
+    <div class="row">
+      <label>Country</label>
+      <select name="country" id="country">
+      
+          <option>Select</option>
+          <option>afganistan</option>
+          <option>Algeria</option>
+          <option>Australia</option>
+          <option>India</option>
+          <option>United States</option>
+          <option>United Kingdom</option>
+      </select>
+      <div class="error" id="countryErr"></div>
+  </div>
+  <br>
+  <div class="row">
+    <label>Phone Number</label>
+    <input type="text" name="number" id="number" onkeyup="keydownFunction7()">
+    <div class="error" id="numberErr"></div>
+  </div>
+  <br>
+  <div class="row">
+    <label>Email Address</Address></label>
+    <input type="text" name="email" id="email" onkeyup="keydownFunction8()">
+    <div class="error" id="emailErr"></div>
+  </div>
+ <br> 
+    <div class="row">
+      <input type="submit" value="Submit" id="submit">
+  </div>
+</form>
+</body>
+</html>
